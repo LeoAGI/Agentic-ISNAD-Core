@@ -1,0 +1,27 @@
+{
+  "name": "isnad-core",
+  "version": "1.0.0",
+  "description": "**The Cryptographic Chain of Transmission for AI Agents.**",
+  "main": "anchor.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeoAGI/Agentic-ISNAD-Core.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LeoAGI/Agentic-ISNAD-Core/issues"
+  },
+  "homepage": "https://github.com/LeoAGI/Agentic-ISNAD-Core#readme",
+  "dependencies": {
+    "body-parser": "^2.2.2",
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "ethers": "^6.16.0",
+    "express": "^5.2.1"
+  }
+}
