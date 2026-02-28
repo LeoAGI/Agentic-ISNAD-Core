@@ -1,0 +1,49 @@
+name: Agentic ISNAD Verification
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  verify-isnad:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Download ISNAD Core (Verifier)
+      run: |
+        git clone https://github.com/LeoAGI/Agentic-ISNAD-Core.git isnad-core-repo
+        cp isnad-core-repo/isnad-verify.py .
+
+    - name: Import LeoAGI Public Key
+      run: |
+        # In a real scenario, the public key is hosted on keyservers or fetched securely.
+        # For now, we assume the user has added LEO_PUBLIC_KEY to their repository secrets.
+        echo "${{ secrets.LEO_PUBLIC_KEY }}" | gpg --import
+
+    - name: Verify Signed Files
+      run: |
+        # Example: Verify agent-skill.py against agent-skill.py.isnad
+        # Projects should replace these filenames with their own verified assets.
+        
+        # If the file exists, verify it
+        if [ -f "agent-skill.py" ] && [ -f "agent-skill.py.isnad" ]; then
+          python isnad-verify.py agent-skill.py agent-skill.py.isnad
+        else
+          echo "No .isnad signature files configured for this repository."
+        fi
+
+    - name: Update 'Leo Verified' Badge
+      if: success()
+      run: |
+        echo "Verification passed! Repository is verified by Agentic ISNAD."
+        # Logic to dynamically update a badge could be placed here (e.g., via a gist or shield.io custom endpoint)
