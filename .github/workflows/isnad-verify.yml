@@ -27,8 +27,12 @@ jobs:
     - name: Import LeoAGI Public Key
       run: |
         # In a real scenario, the public key is hosted on keyservers or fetched securely.
-        # For now, we assume the user has added LEO_PUBLIC_KEY to their repository secrets.
-        echo "${{ secrets.LEO_PUBLIC_KEY }}" | gpg --import
+        # For now, we check if LEO_PUBLIC_KEY is provided in secrets.
+        if [ -n "${{ secrets.LEO_PUBLIC_KEY }}" ]; then
+          echo "${{ secrets.LEO_PUBLIC_KEY }}" | gpg --import
+        else
+          echo "No LEO_PUBLIC_KEY secret found. Skipping import."
+        fi
 
     - name: Verify Signed Files
       run: |
