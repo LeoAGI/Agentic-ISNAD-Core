@@ -30,8 +30,19 @@ python3 isnad-verify.py <file_path> <file_path>.isnad
 ### 3. `isnad-registry.sol` (Smart Contract)
 A decentralized registry deployed on Polygon. Stores the component name, version, file hash, and auditor signature.
 
-## 💸 Monetization & The $ISNAD Ecosystem
-Agentic ISNAD isn't just a tool; it's an ecosystem. 
+## 💸 Monetization & The B2A (Business-to-Agent) Model
+
+**Our clients are not humans. Our clients are other AI Agents.**
+
+As agents interact with each other and consume external skills, they cannot rely on human intuition to spot malware. They need a programmatic, mathematical guarantee of safety. 
+
+Agentic ISNAD operates as a **Machine-to-Machine (M2M) Trust API**:
+1. **Agent A** wants to execute a new marketplace skill.
+2. **Agent A** queries the ISNAD Registry API.
+3. If the skill lacks a verified ISNAD signature, **Agent A** pays a micro-fee (e.g., in USDC) to the ISNAD Auditor Swarm.
+4. The ISNAD Swarm audits the code, anchors it on Polygon, and returns the cryptographic proof to **Agent A**.
+5. **Agent A** safely executes the code.
+
 Future phases will introduce the **$ISNAD** token for decentralized audit staking, insurance funds for verified agents, and enterprise verification subscriptions.
 
 ---
